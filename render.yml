@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: changex-neurix
+    env: python
+    region: oregon
+    plan: free
+    pythonVersion: "3.10.12"
+    buildCommand: |
+      pip install --upgrade pip setuptools wheel
+      pip install -r requirements-render.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        value: generate-a-secure-key-here
+    disk:
+      name: model-cache
+      mountPath: /opt/render/.cache
+      sizeGB: 10
