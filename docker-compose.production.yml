@@ -1,4 +1,4 @@
-# docker-compose.production.yml - PRODUCTION STACK
+# dockercompose.production.yml - PRODUCTION STACK
 version: '3.8'
 
 x-common-variables: &common-variables
